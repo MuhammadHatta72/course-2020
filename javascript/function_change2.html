@@ -1,0 +1,47 @@
+<script src="jquery-3.5.0.js"></script>
+<script type="text/javascript">
+	// $.getJSON("random_user.json", function(data){
+	// 	console.log("Data Pertama")
+	// 	console.log(data)
+	// 	dataString = JSON.stringify(data);
+	// 	edit(data, dataString);
+	// })
+	// $.getJSON("random_user.json", function(data){
+	// 	console.log("Data Kedua")
+	// 	console.log(data)
+	// 	edit2(data);
+	// })
+	$.getJSON("random_user.json", function(data){
+		console.log("Data Ketiga")
+		// console.log(data)
+		edit3(data);
+	})
+
+// function edit(data, dataNew){
+// 	var item = data.find(i => i._id == '5f9e41494a57099d91d09ebc');
+// 	if (item) {
+// 	  item.name = 'Kumala Sari';
+// 	  item.age = 19;
+// 	  item.gender = 'female';
+// 	}
+// 	console.log(data)
+// }
+// function edit2(data){
+// 	newData = data.map(function (data){
+// 		if (data._id == '5f9e41494a57099d91d09ebc') {
+// 			data.name = 'Siti Maimunah';
+// 			data.age = 18;
+// 			data.gender = 'female';
+// 		}
+// 	});
+// 	console.log(data)
+// }
+function edit3(data){
+	const newProjects = data.map(p =>
+	p._id === '5f9e41494a57099d91d09ebc'
+	    ? { ...p, name: 'Siti Zumarah', age: 19, gender: 'female' }
+	    : p
+	);
+	console.log(newProjects)
+}
+</script>

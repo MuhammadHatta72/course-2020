@@ -1,0 +1,52 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Change Json</title>
+  <script src="jquery-3.5.0.js"></script>
+</head>
+<body>
+<table border="1" id="tableData" cellpadding="8">
+	<tr>
+		<td colspan="7" style="text-align: center; vertical-align: middle;"><h2>DATA FILE JSON</h2></td>
+	</tr>
+	<tr>
+		<th>Nama</th>
+		<th>Age</th>
+		<th>Gender</th>
+		<th>Company</th>
+		<th>Email</th>
+		<th>Phone</th>
+		<th>Opsi</th>
+	</tr>
+</table>
+<div id="data">
+	
+</div>
+ 
+<script>
+$.getJSON( "random_user.json", function( data ) {
+	jsonObject= JSON.stringify(data);
+  	appendData(data);
+  	// appendJson(jsonObject);
+ });
+function appendData(data){
+	let	myTable = document.getElementById('tableData');
+	let myContainer = document.getElementById('data');
+	let allObject = Object.keys(data).length;
+	// console.log(myContainer, data, jsonParse);
+	for (var i = 0; i < allObject; i++) {
+		let a = i + 1;
+		var idNew = data[i]._id;
+		let tr=document.createElement('tr');
+		tr.innerHTML = '<td class="nama'+a+'">'+ data[i].name +'</td><td>'+ data[i].age +'</td><td>'+ data[i].gender +'</td><td>'+ data[i].company +'</td><td>'+ data[i].email +'</td><td>'+ data[i].phone +'</td><td><button onclick="edit(\''+idNew+'\', \''+data[i].name+'\', \''+data[i].age+'\', \''+data[i].gender+'\', \''+data[i].company+'\', \''+data[i].email+'\', \''+data[i].phone+'\');">Edit</button></td>';
+		myTable.appendChild(tr);
+		// console.log(data[i].name, tr, idNew);
+	}
+}
+function edit(idNew, nama, age, gender, company, email, phone){
+	alert();
+}
+</script>
+ 
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Show 2 File Json</title>
+</head>
+<body>
+	<table border="1" id="tableData" cellpadding="8">
+		<tr>
+			<td colspan="3" style="text-align: center; vertical-align: middle;"><h2>DATA FILE JSON</h2></td>
+		</tr>
+		<tr>
+			<th>Nama</th>
+			<th>Phone</th>
+			<th>Company Name</th>
+		</tr>
+	</table>
+</body>
+</html>
+<script src="jquery-3.5.0.js"></script>
+<script type="text/javascript">
+	// $.getJSON('generated_employees.json', function(data1){
+	// 	$.getJSON('generated_companies.json', function(data2){
+	// 		// console.log(data1, data2)
+	// 		display2(data1, data2);
+	// 		displayTable(data1);
+	// 	});
+	// });
+	// function display2(data1, data2){
+	// 	let data1New=JSON.stringify(data1);
+	// 	for (var i = 0; i < data2.length; i++) {
+	// 		let item=data1.find(x => x.companyId == data2[i]._id);
+	// 		if (item) {
+	// 			item.companyId = data2[i].name;
+	// 		}
+	// 	}
+	// }
+	// function displayTable(data){
+	// 	console.log(data)
+	// 	let table = document.getElementById('tableData');
+	// 	for (var i = 0; i < data.length; i++) {
+	// 		let tr=document.createElement('tr');
+	// 		tr.innerHTML = '<td class="nama">'+ data[i].name +'</td><td>'+ data[i].age +'</td><td>'+ data[i].gender +'</td><td>'+ data[i].companyId +'</td><td>'+ data[i].email +'</td><td>'+ data[i].phone +'</td>';
+	// 		table.appendChild(tr);
+	// 		// console.log(data[i].name, tr, idNew);
+	// 	}
+	// }
+	$.getJSON('generated_employees.json', function(data1){
+		$.getJSON('generated_companies.json', function(data2){
+			display3(data1, data2);
+		});
+	});
+	function display3(employes, companies){
+		let indexedCompanies = companies.reduce((all, company) => {
+			all[company._id] = company;
+			return all;
+		}, {});
+		// console.log(indexedCompanies)
+		employes.forEach(employeonly => {
+			console.log(employeonly)
+			// console.log("name :", employeonly.name);
+			// console.log("Phone :", employeonly.phone);
+			// console.log("Company Name :", indexedCompanies[employeonly.companyId].name);
+			// console.log(employes.length)
+			let table = document.getElementById('tableData');
+			let tr=document.createElement('tr');
+
+			if (employeonly.companyId == 0) {
+				tr.innerHTML = '<td class="nama">'+ employeonly.name +'</td><td>'+ employeonly.phone +'</td><td>Company Not Found</td>';
+				table.appendChild(tr);
+			}else{
+				tr.innerHTML = '<td class="nama">'+ employeonly.name +'</td><td>'+ employeonly.phone +'</td><td>'+ indexedCompanies[employeonly.companyId].name +'</td>';
+				table.appendChild(tr);
+			}
+
+			//CompanyId Lengkap
+			// tr.innerHTML = '<td class="nama">'+ employeonly.name +'</td><td>'+ employeonly.phone +'</td><td>'+ indexedCompanies[employeonly.companyId].name +'</td>';
+			// table.appendChild(tr);
+		})
+	}
+</script>

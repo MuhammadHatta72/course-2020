@@ -1,0 +1,18 @@
+<script src="jquery-3.5.0.js"></script>
+<script type="text/javascript">
+	const student = {
+		name : "Clairo",
+		title : "S2",
+		age : 18
+	}
+	// studentString = JSON.stringify(student);
+	// console.log(studentString)
+	// console.log("name " + student.name + " title " + student.title + " age " + student.age)
+	const keyValue = (input) => Object.entries(input).forEach(([key, value]) => {
+		console.log(key, value)
+	})
+	// keyValue(student)
+
+	var strStudent = Object.keys(student).map(key => `${key} ${student[key]}`).join(" ");
+	console.log(strStudent);
+</script>
