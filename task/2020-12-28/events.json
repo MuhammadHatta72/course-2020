@@ -1,0 +1,42 @@
+[
+  {
+    "_id": "5fe98f047d787a8c7c2505ac",
+    "name": "Election Day",
+    "date": "2020-12-09T04:47:50"
+  },
+  {
+    "_id": "5fe98f040745c64ed66b0831",
+    "name": "Flash Sale",
+    "date": "2020-12-12T01:38:07"
+  },
+  {
+    "_id": "5fe98f04744789aab8bb00c0",
+    "name": "Badminton",
+    "date": "2020-12-12T08:59:51"
+  },
+  {
+    "_id": "5fe98f047a2e43b9f64ae559",
+    "name": "Christmas",
+    "date": "2020-12-25T07:41:28"
+  },
+  {
+    "_id": "5fe98f047ac23cc215943b08",
+    "name": "Futsal",
+    "date": "2020-12-19T11:52:43"
+  },
+  {
+    "_id": "5fe98f04040a750b73341ac1",
+    "name": "Study",
+    "date": "2020-12-11T04:53:20"
+  },
+  {
+    "_id": "5fe98f04adc9487530e5b849",
+    "name": "English Course",
+    "date": "2020-12-11T11:14:06"
+  },
+  {
+    "_id": "5fe98f0479b1e63e7a5a7360",
+    "name": "Coding",
+    "date": "2020-12-11T07:50:33"
+  }
+]
