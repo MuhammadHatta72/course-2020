@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Tabel Event</title>
+</head>
+<body>
+	<table id="table1" border="1" cellpadding="5">
+		<tr>
+			<th>#</th>
+			<th>Date</th>
+			<th>Event</th>
+		</tr>
+		
+	</table>
+</body>
+</html>
+
+<script type="text/javascript">
+	let Data = new XMLHttpRequest();
+	Data.onreadystatechange = function () {
+		if (this.readyState == 4 && this.status == 200) {
+			var obj = this.responseText;
+        	var obj1 = JSON.parse(obj);
+        	const countEvent = obj1.length;
+        	obj1.forEach(emp => {
+        		// console.log(emp.name);
+        		let dateTable = emp.date.split("T")[0];
+        		
+        		Table = document.getElementById('table1');
+        		headerTable = document.createElement('tr');
+        	} );
+        	const newEvents = obj1.map(p =>
+			p._id 
+			    ? { ...p, date: p.date.split("T")[0] }
+			    : p
+			);
+			console.log("Before",newEvents)
+
+			let result = Object.values(newEvents.reduce((c, {date , name}) => {
+			  c[date] = c[date] || {date,name: []};
+			  c[date].name = c[date].name.concat(Array.isArray(name) ? name : [name]); 
+			  return c;
+			}, {}));
+			console.log("After",result);
+
+			result.forEach(function (dataEvent, index){
+				console.log(index, dataEvent)
+				let table = document.getElementById('table1');
+				let tr=document.createElement('tr');
+					let nomor = index + 1;
+					tr.innerHTML = '<td>'+ nomor +'</td><td>'+ dataEvent.date +'</td><td>'+ dataEvent.name +'</td>';
+					table.appendChild(tr);
+			})
+		}
+	}
+	Data.open("GET", "events.json", true);
+	Data.send();
+</script>
